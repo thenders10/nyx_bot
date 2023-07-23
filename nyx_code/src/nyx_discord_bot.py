@@ -4,6 +4,7 @@ import asyncio
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
+from nyx_code.definitions import *
 
 intents = discord.Intents(messages=True, guilds=True, members=True, voice_states=True)
 bot = commands.Bot(command_prefix='!', intents=intents)
@@ -38,7 +39,7 @@ async def nyxnyxnyx(ctx):
     if voice != None:
         voice_client = await voice.channel.connect()
         
-        mp3_list = ["nyx_1.mp3", "nyx_2.mp3"]
+        mp3_list = [os.path.join(DATA_DIR,"nyx_1.mp3"), os.path.join(DATA_DIR,"nyx_2.mp3")]
         mp3_index = random.randint(0, 1)
         
         audio_source = discord.FFmpegPCMAudio(mp3_list[mp3_index])
